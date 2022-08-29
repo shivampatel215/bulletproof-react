@@ -29,6 +29,7 @@ const models = {
     id: primaryKey(String),
     body: String,
     authorId: String,
+    authorName: String,
     discussionId: String,
     createdAt: Number,
   },

@@ -1,3 +1,5 @@
+import { features } from 'process';
+
 import { useMutation } from 'react-query';
 
 import { axios } from '@/lib/axios';
@@ -10,6 +12,7 @@ export type CreateCommentDTO = {
   data: {
     body: string;
     discussionId: string;
+    authorName: string | null | undefined;
   };
 };
 

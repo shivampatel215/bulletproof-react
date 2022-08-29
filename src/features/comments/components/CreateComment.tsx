@@ -3,6 +3,7 @@ import * as z from 'zod';
 
 import { Button } from '@/components/Elements';
 import { Form, FormDrawer, TextAreaField } from '@/components/Form';
+import { useAuth } from '@/lib/auth';
 
 import { CreateCommentDTO, useCreateComment } from '../api/createComment';
 
@@ -15,6 +16,7 @@ type CreateCommentProps = {
 };
 
 export const CreateComment = ({ discussionId }: CreateCommentProps) => {
+  const { user } = useAuth();
   const createCommentMutation = useCreateComment({ discussionId });
   return (
     <>
@@ -45,6 +47,7 @@ export const CreateComment = ({ discussionId }: CreateCommentProps) => {
               data: {
                 body: values.body,
                 discussionId,
+                authorName: user?.firstName,
               },
             });
           }}

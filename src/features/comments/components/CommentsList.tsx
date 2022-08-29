@@ -37,6 +37,7 @@ export const CommentsList = ({ discussionId }: CommentsListProps) => {
         <h4>No Comments Found</h4>
       </div>
     );
+  console.log(commentsQuery.data);
 
   return (
     <ul aria-label="comments" className="flex flex-col space-y-3">
@@ -48,7 +49,9 @@ export const CommentsList = ({ discussionId }: CommentsListProps) => {
         >
           <Authorization policyCheck={POLICIES['comment:delete'](user as User, comment)}>
             <div className="flex justify-between">
-              <span className="text-xs font-semibold">{formatDate(comment.createdAt)}</span>
+              <span className="text-xs font-semibold">{`${formatDate(comment.createdAt)} ${
+                comment.authorName
+              } said:`}</span>
               <DeleteComment discussionId={discussionId} id={comment.id} />
             </div>
           </Authorization>
